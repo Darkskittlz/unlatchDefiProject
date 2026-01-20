@@ -132,7 +132,7 @@ function Properties() {
     if (filters.location && !property.location.toLowerCase().includes(filters.location.toLowerCase())) return false;
     if (filters.minROI && parseFloat(property.roi) < parseFloat(filters.minROI)) return false;
     if (filters.maxROI && parseFloat(property.roi) > parseFloat(filters.maxROI)) return false;
-    
+
     if (filters.priceRange !== 'all') {
       const [min, max] = filters.priceRange.split('-').map(Number);
       if (max && (property.price.usd < min || property.price.usd > max)) return false;
@@ -155,7 +155,7 @@ function Properties() {
           break
       }
     }
-    
+
     return true;
   });
 

@@ -3,6 +3,7 @@ import { motion } from 'framer-motion';
 import { FiHome, FiMaximize2, FiCalendar, FiTrendingUp, FiUsers, FiDollarSign, FiGrid } from 'react-icons/fi';
 import { FacebookShareButton, TwitterShareButton, LinkedinShareButton } from 'react-share';
 import { FaFacebook, FaTwitter, FaLinkedin, FaEthereum, FaWallet } from 'react-icons/fa';
+import { handleMetaMaskConnect } from '../components/utils/MetaMaskIntegration';
 
 function PropertyDetail() {
   const { id } = useParams();
@@ -130,7 +131,7 @@ function PropertyDetail() {
             >
               <h2 className="text-2xl font-bold mb-4">Property Details</h2>
               <p className="text-secondary-600 mb-6">{property.description}</p>
-              
+
               <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-6">
                 <div className="flex items-center space-x-2">
                   {/* <FiBed className="text-primary-600" /> */}
@@ -280,7 +281,7 @@ function PropertyDetail() {
                   Min Investment: {property.metrics.minInvestment}
                 </p>
               </div>
-              
+
               <Link
                 to={`/property-3d/${id}`}
                 className="btn w-full mb-4 flex items-center justify-center">
@@ -288,11 +289,14 @@ function PropertyDetail() {
                 View 3D Model
               </Link>
 
-              <button className="btn w-full mb-4 flex items-center justify-center">
+              <button
+                className="btn w-full mb-4 flex items-center justify-center"
+                onClick={handleMetaMaskConnect}
+              >
                 <FaWallet className="mr-2" />
                 Connect Wallet to Invest
               </button>
-              
+
               <div className="flex items-center justify-center space-x-4 pt-4 border-t">
                 <FacebookShareButton url={shareUrl}>
                   <FaFacebook className="text-2xl text-blue-600 hover:opacity-80" />

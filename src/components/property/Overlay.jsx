@@ -3,6 +3,7 @@ import { useEffect, useState } from "react";
 import { scenes } from "./Experience";
 import { FaWallet } from "react-icons/fa";
 import { Link } from "react-router-dom";
+import { handleMetaMaskConnect } from "../utils/MetaMaskIntegration";
 
 export const slideAtom = atom(0);
 
@@ -27,14 +28,13 @@ export const Overlay = () => {
   return (
     <>
       <div
-        className={`fixed z-10 top-0 left-0 bottom-0 right-0 flex flex-col justify-between pointer-events-none text-black ${
-          visible ? "" : "opacity-0"
-        } transition-opacity duration-1000`}
+        className={`fixed z-10 top-0 left-0 bottom-0 right-0 flex flex-col justify-between pointer-events-none text-black ${visible ? "" : "opacity-0"
+          } transition-opacity duration-1000`}
       >
         <Link to='/' className="flex items-center justify-center mx-auto mt-8">
           <svg width="30" height="35" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <circle cx="15" cy="20" r="10" stroke="#0682ff"/>
-              <circle cx="15" cy="20" r="6" stroke="#0682ff" strokeWidth="3"/>
+            <circle cx="15" cy="20" r="10" stroke="#0682ff" />
+            <circle cx="15" cy="20" r="6" stroke="#0682ff" strokeWidth="3" />
           </svg>
           <span className="text-2xl text-primary-700 font-bold mt-1.5">GoldenProp</span>
         </Link>
@@ -71,7 +71,10 @@ export const Overlay = () => {
               <p className="text-xs opacity-80">Valuation</p>
             </div>
           </div>
-          <button className="btn w-full lg:w-1/2 mt-6 flex items-center justify-center text-xl">
+          <button
+            onClick={handleMetaMaskConnect}
+            className="btn w-full lg:w-1/2 mt-6 flex items-center justify-center text-xl"
+          >
             <FaWallet className="mr-2" />
             Invest
           </button>

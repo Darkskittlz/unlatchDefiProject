@@ -5,6 +5,7 @@ import { FiArrowRight, FiUser, FiClock } from 'react-icons/fi';
 import { FaWallet, FaStore, FaMoneyBillWave, FaExchangeAlt, FaChartLine, FaLock, FaUserCog, FaCoins } from 'react-icons/fa';
 import { SiEthereum } from 'react-icons/si';
 import { FiChevronDown, FiChevronUp } from 'react-icons/fi';
+import { handleMetaMaskConnect } from '../components/utils/MetaMaskIntegration';
 
 function Home() {
   const [openSections, setOpenSections] = useState({});
@@ -427,6 +428,7 @@ function Home() {
               </Link>
               <button
                 className="btn bg-gradient-to-r from-primary-700 to-primary-800 hover:from-primary-800 hover:to-primary-900"
+                onClick={handleMetaMaskConnect}
               >
                 <FaWallet className="mr-2" />
                 Connect Wallet
