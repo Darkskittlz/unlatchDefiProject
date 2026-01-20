@@ -208,7 +208,7 @@ function FAQ() {
                   {section.questions.map((item, questionIndex) => (
                     <div key={questionIndex} className="p-6">
                       <button
-                        className="w-full flex justify-between items-center text-left"
+                        className="w-full flex justify-between items-center focus:outline-none text-left"
                         onClick={() => toggleSection(section.title, questionIndex)}
                       >
                         <span className="font-medium">{item.question}</span>
