@@ -1,6 +1,9 @@
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { FiMenu, FiX } from 'react-icons/fi';
+import { handleMetaMaskConnect } from '../utils/MetaMaskIntegration';
+
+
 
 function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
@@ -20,8 +23,8 @@ function Navbar() {
           <div className="flex">
             <Link to="/" className="flex items-center">
               <svg width="30" height="35" fill="none" xmlns="http://www.w3.org/2000/svg">
-                  <circle cx="15" cy="20" r="10" stroke="#2660d3"/>
-                  <circle cx="15" cy="20" r="6" stroke="#2660d3" strokeWidth="3"/>
+                <circle cx="15" cy="20" r="10" stroke="#2660d3" />
+                <circle cx="15" cy="20" r="6" stroke="#2660d3" strokeWidth="3" />
               </svg>
               <span className="text-2xl font-bold text-primary-600 mt-1.5">GoldenProp</span>
             </Link>
@@ -41,6 +44,7 @@ function Navbar() {
             ))}
             <button
               className="btn"
+              onClick={handleMetaMaskConnect}
             >
               Connect
             </button>
@@ -74,7 +78,10 @@ function Navbar() {
               ))}
               <button
                 className="block mx-2 mt-2 px-3 py-2 text-base font-medium btn w-auto"
-                onClick={() => setIsOpen(false)}
+                onClick={() => {
+                  setIsOpen(false)
+                  handleMetaMaskConnect()
+                }}
               >
                 Connect
               </button>
